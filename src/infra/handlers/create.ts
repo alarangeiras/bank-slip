@@ -1,5 +1,5 @@
-import { SlipDto } from '@/application/dto/slip.dto';
-import { initSlipController } from '@/main/controllers/init-slip-controller';
+import { CreateSlipInput } from '@/application/controllers/input/slip.dto';
+import { initSlipController } from '@/init/controllers/init-slip-controller';
 import { wrapApiErrors } from '@/utils/error.util';
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 
@@ -7,7 +7,7 @@ export const handler = wrapApiErrors(
 	async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
 		const controller = initSlipController();
 		const body = event.body;
-		await controller.create(SlipDto.fromJSON(body));
+		await controller.create(CreateSlipInput.fromJSON(body));
 		return {
 			statusCode: 201,
 			body: JSON.stringify({

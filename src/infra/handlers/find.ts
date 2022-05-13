@@ -1,4 +1,4 @@
-import { initSlipController } from '@/main/controllers/init-slip-controller';
+import { initSlipController } from '@/init/controllers/init-slip-controller';
 import { wrapApiErrors } from '@/utils/error.util';
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 

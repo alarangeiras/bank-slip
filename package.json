@@ -21,6 +21,7 @@
 		"webpack": "^5.72.1"
 	},
 	"dependencies": {
-		"aws-sdk": "^2.1134.0"
+		"aws-sdk": "^2.1134.0",
+		"class-validator": "^0.13.2"
 	}
 }
