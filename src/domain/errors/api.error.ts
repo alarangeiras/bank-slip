@@ -1,3 +1,3 @@
 export class ApiError {
-	constructor(public code: number, public message: string) {}
+	constructor(public code: number, public body: any) {}
 }

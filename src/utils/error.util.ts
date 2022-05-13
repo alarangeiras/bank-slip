@@ -12,9 +12,7 @@ export const wrapApiErrors = (wrappedFunction: WrappedApiFunction): APIGatewayPr
 				const apiError = <ApiError>error;
 				return {
 					statusCode: apiError.code,
-					body: JSON.stringify({
-						description: apiError.message,
-					}),
+					body: JSON.stringify(apiError.body),
 				};
 			}
 			return {
