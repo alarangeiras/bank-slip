@@ -3,5 +3,5 @@ import { initClassValidatorAdapter } from '@/init/adapters/init-class-validator-
 import { initSlipService } from '@/init/services/init-slip-service';
 
 export const initSlipController = (): SlipController => {
-	return new SlipController(initSlipService(), initClassValidatorAdapter());
+  return new SlipController(initSlipService(), initClassValidatorAdapter());
 };

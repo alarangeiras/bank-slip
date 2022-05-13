@@ -1,5 +1,5 @@
 export interface SlipOutput {
-	code: string;
-	amount: number;
-	expirationDate: Date;
+  code: string;
+  amount: number;
+  expirationDate: Date;
 }
