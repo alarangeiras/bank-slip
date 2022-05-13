@@ -1,4 +1,4 @@
-import { CreateSlipInput } from '@/application/controllers/input/slip.dto';
+import { CreateSlipInput } from '@/application/controllers/input/create-slip.input';
 import { initSlipController } from '@/init/controllers/init-slip-controller';
 import { wrapApiErrors } from '@/utils/error.util';
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
