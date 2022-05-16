@@ -3,9 +3,9 @@ import { BarcodeService } from '@/domain/services/barcode.service';
 
 export class AgreementBarcodeService implements BarcodeService {
   getType(): SlipType {
-    throw new Error('Method not implemented.');
+    return SlipType.AGREEMENT;
   }
-  evaluateBarcode(barcode: string): Promise<boolean> {
-    throw new Error('Method not implemented.');
+  async evaluateBarcode(barcode: string): Promise<boolean> {
+    return true;
   }
 }

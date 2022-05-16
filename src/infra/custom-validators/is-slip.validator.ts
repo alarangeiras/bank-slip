@@ -17,7 +17,7 @@ export function IsSlip() {
               throw Error();
             }
             const stringValue = <string>value;
-            if (stringValue.length < 44) {
+            if (stringValue.length < 47) {
               throw Error();
             }
             parseInt(stringValue);
