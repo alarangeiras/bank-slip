@@ -5,17 +5,17 @@ import { Validator } from '@/application/ports/validator.port';
 import { SlipService } from '@/domain/services/slip.service';
 
 export class SlipController {
-  constructor(private slipService: SlipService, private validator: Validator) {}
+    constructor(private slipService: SlipService, private validator: Validator) {}
 
-  async find(slipInput: FindSlipInput): Promise<SlipOutput> {
-    await this.validator.validate(slipInput);
-    return await this.slipService.find(slipInput.code!);
-  }
+    async find(slipInput: FindSlipInput): Promise<SlipOutput> {
+        await this.validator.validate(slipInput);
+        return await this.slipService.find(slipInput.code!);
+    }
 
-  async create(slipInput: CreateSlipInput): Promise<SlipOutput> {
-    await this.validator.validate(slipInput);
-    const entity = await slipInput.toEntity();
-    await this.slipService.create(entity);
-    return slipInput;
-  }
+    async create(slipInput: CreateSlipInput): Promise<SlipOutput> {
+        await this.validator.validate(slipInput);
+        const entity = await slipInput.toEntity();
+        await this.slipService.create(entity);
+        return slipInput;
+    }
 }

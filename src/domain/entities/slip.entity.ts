@@ -1,5 +1,6 @@
 export type SlipEntity = {
-  code: string;
-  amount: number;
-  expirationDate: Date;
+    code: string;
+    barCode: string;
+    amount: number;
+    expirationDate: Date;
 };

@@ -3,50 +3,65 @@ import { IsSlip } from '@/infra/custom-validators/is-slip.validator';
 import { IsDate, IsNumber, IsString } from 'class-validator';
 
 export class CreateSlipInput {
-  @IsSlip()
-  @IsString()
-  code: string;
+    @IsSlip()
+    @IsString()
+    code: string;
 
-  @IsNumber()
-  amount: number;
+    @IsString()
+    barCode: string;
 
-  @IsDate()
-  expirationDate: Date;
+    @IsNumber()
+    amount: number;
 
-  constructor(code: string, amount: number, expirationDate: Date) {
-    this.code = code;
-    this.amount = amount;
-    this.expirationDate = expirationDate;
-  }
+    @IsDate()
+    expirationDate: Date;
 
-  async toEntity(): Promise<SlipEntity> {
-    return {
-      code: this.code,
-      amount: this.amount,
-      expirationDate: this.expirationDate,
-    };
-  }
-
-  static fromEntity(entity: SlipEntity): CreateSlipInput {
-    return new CreateSlipInput(entity.code, entity.amount, entity.expirationDate);
-  }
-
-  static fromJSON(jsonString: string | null): CreateSlipInput {
-    let expirationDate: Date;
-    if (!jsonString) {
-      //treat error
-    }
-    const object = JSON.parse(jsonString!);
-    if (isNaN(object.amount)) {
-      //treat error
-    }
-    try {
-      expirationDate = new Date(Date.parse(object.expirationDate));
-    } catch (error) {
-      throw Error();
-      //treat error
+    constructor(code: string, barCode: string, amount: number, expirationDate: Date) {
+        this.code = code;
+        this.barCode = barCode;
+        this.amount = amount;
+        this.expirationDate = expirationDate;
     }
 
-    return new CreateSlipInput(object.code, parseFloat(object.amount), expirationDate);
-  }
+    async toEntity(): Promise<SlipEntity> {
+        return {
+            code: this.code,
+            barCode: this.barCode,
+            amount: this.amount,
+            expirationDate: this.expirationDate,
+        };
+    }
+
+    static fromEntity(entity: SlipEntity): CreateSlipInput {
+        return new CreateSlipInput(
+            entity.code,
+            entity.barCode,
+            entity.amount,
+            entity.expirationDate,
+        );
+    }
+
+    static fromJSON(jsonString: string | null): CreateSlipInput {
+        let expirationDate: Date;
+        if (!jsonString) {
+            //treat error
+        }
+        const object = JSON.parse(jsonString!);
+        if (isNaN(object.amount)) {
+            //treat error
+        }
+        try {
+            expirationDate = new Date(Date.parse(object.expirationDate));
+        } catch (error) {
+            throw Error();
+            //treat error
+        }
+
+        return new CreateSlipInput(
+            object.code,
+            object.barCode,
+            parseFloat(object.amount),
+            expirationDate,
+        );
+    }
 }

@@ -2,14 +2,14 @@ import { BarcodeTypeNotAllowedError } from '@/domain/errors/barcode-type-not-all
 import { BarcodeService } from '@/domain/services/barcode.service';
 
 export class BarcodeFactory {
-  constructor(private barcodeServices: BarcodeService[]) {}
+    constructor(private barcodeServices: BarcodeService[]) {}
 
-  async build(barcode: string): Promise<BarcodeService> {
-    for (const service of this.barcodeServices) {
-      if (await service.evaluateBarcode(barcode)) {
-        return service;
-      }
+    async build(barcode: string): Promise<BarcodeService> {
+        for (const service of this.barcodeServices) {
+            if (await service.evaluateBarcode(barcode)) {
+                return service;
+            }
+        }
+        throw new BarcodeTypeNotAllowedError(barcode);
     }
-    throw new BarcodeTypeNotAllowedError(barcode);
-  }
 }

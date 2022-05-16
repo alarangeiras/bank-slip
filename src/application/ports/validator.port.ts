@@ -1,3 +1,3 @@
 export interface Validator {
-  validate(object: any): Promise<void>;
+    validate(object: any): Promise<void>;
 }

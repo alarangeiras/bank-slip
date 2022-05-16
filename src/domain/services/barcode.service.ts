@@ -1,4 +1,3 @@
-
 export interface BarcodeService {
-  evaluateBarcode(barcode: string): Promise<boolean>;
+    evaluateBarcode(barcode: string): Promise<boolean>;
 }
