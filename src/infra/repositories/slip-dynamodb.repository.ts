@@ -10,16 +10,17 @@ export class SlipDynamoRepository implements SlipRepository {
             .get({
                 TableName: this.tableName,
                 Key: {
-                    slipCode: code,
+                    code,
                 },
                 ConsistentRead: true,
             })
             .promise();
         if (result.Item) {
             return {
-                code: result.Item.slipCode,
+                code: result.Item.code,
+                barCode: result.Item.barCode,
                 amount: result.Item.amount,
-                expirationDate: result.Item.expirationDate,
+                expirationDate: new Date(result.Item.expirationDate),
             };
         }
         return undefined;
@@ -28,9 +29,10 @@ export class SlipDynamoRepository implements SlipRepository {
         const request: DynamoDB.DocumentClient.PutItemInput = {
             TableName: this.tableName,
             Item: {
-                slipCode: slip.code,
+                code: slip.code,
+                barCode: slip.barCode,
                 amount: slip.amount,
-                expirationDate: slip.expirationDate,
+                expirationDate: slip.expirationDate.toISOString(),
             },
         };
         await this.client.put(request).promise();

@@ -5,7 +5,6 @@ export class TitleBarCodeService implements BarcodeService {
     async evaluateBarcode(barcode: string): Promise<boolean> {
         try {
             const fields = this.splitFields(barcode);
-            console.log(fields);
             for (const field of fields) {
                 const validationResult = validateDAC(field);
                 if (!validationResult) {

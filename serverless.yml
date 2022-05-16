@@ -50,10 +50,10 @@ resources:
       Properties:
         TableName: bank-slip
         AttributeDefinitions:
-          - AttributeName: slipCode
+          - AttributeName: code
             AttributeType: S
         KeySchema:
-          - AttributeName: slipCode
+          - AttributeName: code
             KeyType: HASH
         ProvisionedThroughput:
           ReadCapacityUnits: 1

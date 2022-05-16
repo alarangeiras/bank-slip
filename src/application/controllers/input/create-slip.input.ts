@@ -61,7 +61,7 @@ export class CreateSlipInput {
             object.code,
             object.barCode,
             parseFloat(object.amount),
-            expirationDate,
+            new Date(object.expirationDate),
         );
     }
 }

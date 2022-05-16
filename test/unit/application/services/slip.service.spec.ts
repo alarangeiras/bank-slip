@@ -23,6 +23,7 @@ describe(SlipServiceImpl.name.toString(), () => {
 
             await slipService.create({
                 code: '12314142',
+                barCode: '1213123',
                 amount: 200,
                 expirationDate: new Date(),
             });
@@ -45,6 +46,7 @@ describe(SlipServiceImpl.name.toString(), () => {
             try {
                 await slipService.create({
                     code: '12314142',
+                    barCode: '1213123',
                     amount: 200,
                     expirationDate: new Date(),
                 });
