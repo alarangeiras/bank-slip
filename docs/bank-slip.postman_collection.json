@@ -1,0 +1,65 @@
+{
+	"info": {
+		"_postman_id": "2b6882e7-3c09-4398-8799-441fef31046b",
+		"name": "bank-slip",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"code\": \"00190500954014481606906809350314337370000000100\",\r\n    \"barCode\": \"00190500954014481606906809350314337370000000100\",\r\n    \"amount\": 500,\r\n    \"expirationDate\": \"2018-07-16\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/dev/slip",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"dev",
+						"slip"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/dev/slip/:code",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"dev",
+						"slip",
+						":code"
+					],
+					"variable": [
+						{
+							"key": "code",
+							"value": "00190500954014481606906809350314337370000000100"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
