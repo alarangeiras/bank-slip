@@ -43,7 +43,6 @@ export class CreateSlipInput {
     }
 
     static fromJSON(jsonString: string | null): CreateSlipInput {
-        let expirationDate: Date;
         if (!jsonString) {
             throw new ValidationError(['payload not informed']);
         }

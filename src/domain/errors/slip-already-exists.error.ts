@@ -5,6 +5,5 @@ export class SlipAlreadyExists extends ApiError {
         super(412, {
             message: `the slip ${code} already exists`,
         });
-        Object.setPrototypeOf(this, SlipAlreadyExists);
     }
 }
