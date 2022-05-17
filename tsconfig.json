@@ -1,18 +1,24 @@
 {
-	"compilerOptions": {
-		"experimentalDecorators": true,
-		"preserveConstEnums": true,
-		"strictNullChecks": true,
-		"sourceMap": true,
-		"allowJs": true,
-		"target": "es5",
-		"outDir": ".build",
-		"moduleResolution": "node",
-		"lib": ["es2015"],
-		"rootDir": "./",
-		"baseUrl": "./",
-		"paths": {
-			"@/*": ["./src/*"]
-		}
-	}
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "preserveConstEnums": true,
+        "strictNullChecks": true,
+        "sourceMap": true,
+        "allowJs": true,
+        "target": "es5",
+        "outDir": ".build",
+        "moduleResolution": "node",
+        "lib": ["es2015"],
+        "rootDir": "./",
+        "baseUrl": "./",
+        "paths": {
+            "@/*": ["./src/*"]
+        },
+        "plugins": [
+            {
+                "transform": "ts-auto-mock/transformer",
+                "cacheBetweenTests": false
+            }
+        ]
+    }
 }

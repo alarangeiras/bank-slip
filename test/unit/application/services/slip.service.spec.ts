@@ -1,18 +1,19 @@
 import { BarcodeFactory } from '@/application/factories/barcode.factory';
 import { SlipServiceImpl } from '@/application/services/slip.service';
 import { SlipRepository } from '@/domain/repositories/slip.repository';
+import { createMock } from 'ts-auto-mock';
 
 describe(SlipServiceImpl.name.toString(), () => {
     let slipService: SlipServiceImpl;
     let slipRepository: SlipRepository;
     let barcodeFactory: BarcodeFactory;
     beforeEach(() => {
-        slipRepository = {} as any as SlipRepository;
+        slipRepository = createMock<SlipRepository>();
         barcodeFactory = new BarcodeFactory([]);
         slipService = new SlipServiceImpl(slipRepository, barcodeFactory);
     });
     describe(SlipServiceImpl.prototype.create.name.toString(), () => {
-        test('should create a slip', async () => {
+        it('should create a slip', async () => {
             const barcodeFactoryBuildSpy = jest
                 .spyOn(barcodeFactory, 'build')
                 .mockResolvedValue(undefined as any);
@@ -32,7 +33,7 @@ describe(SlipServiceImpl.name.toString(), () => {
             expect(slipRepositoryFindSpy).toBeCalledTimes(1);
             expect(slipRepositoryCreateSpy).toBeCalledTimes(1);
         });
-        test('slip should already exists', async () => {
+        it('slip should already exists', async () => {
             const barcodeFactoryBuildSpy = jest
                 .spyOn(barcodeFactory, 'build')
                 .mockResolvedValue(undefined as any);
@@ -60,7 +61,7 @@ describe(SlipServiceImpl.name.toString(), () => {
         });
     });
     describe(SlipServiceImpl.prototype.find.name.toString(), () => {
-        test('find a slip', async () => {
+        it('find a slip', async () => {
             const barcodeFactoryBuildSpy = jest
                 .spyOn(barcodeFactory, 'build')
                 .mockResolvedValue(undefined as any);
@@ -74,7 +75,7 @@ describe(SlipServiceImpl.name.toString(), () => {
             expect(barcodeFactoryBuildSpy).toBeCalledTimes(1);
             expect(slipRepositoryFindSpy).toBeCalledTimes(1);
         });
-        test('could not find a slip', async () => {
+        it('could not find a slip', async () => {
             const barcodeFactoryBuildSpy = jest
                 .spyOn(barcodeFactory, 'build')
                 .mockResolvedValue(undefined as any);

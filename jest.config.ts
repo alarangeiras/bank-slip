@@ -8,7 +8,17 @@ const config: Config.InitialOptions = {
     transform: {
         '^.+\\.ts?$': 'ts-jest',
     },
-    // collectCoverageFrom: ['<rootDir>/src/**/*.ts', '!<rootDir>/src/infra/**/*.ts', '!<rootDir>/src/init/**/*.ts'],
+    globals: {
+        'ts-jest': {
+            compiler: 'ttypescript',
+        },
+    },
+    setupFiles: ['<rootDir>jest-setup.config.ts'],
+    collectCoverageFrom: [
+        '<rootDir>/src/**/*.ts',
+        '!<rootDir>/src/infra/**/*.ts',
+        '!<rootDir>/src/init/**/*.ts',
+    ],
     moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/' }),
 };
 export default config;
