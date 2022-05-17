@@ -1,4 +1,5 @@
 import { SlipEntity } from '@/domain/entities/slip.entity';
+import { ValidationError } from '@/domain/errors/validation.error';
 import { IsSlip } from '@/infra/custom-validators/is-slip.validator';
 import { IsDate, IsNumber, IsString } from 'class-validator';
 
@@ -44,18 +45,9 @@ export class CreateSlipInput {
     static fromJSON(jsonString: string | null): CreateSlipInput {
         let expirationDate: Date;
         if (!jsonString) {
-            //treat error
+            throw new ValidationError(['payload not informed']);
         }
         const object = JSON.parse(jsonString!);
-        if (isNaN(object.amount)) {
-            //treat error
-        }
-        try {
-            expirationDate = new Date(Date.parse(object.expirationDate));
-        } catch (error) {
-            throw Error();
-            //treat error
-        }
 
         return new CreateSlipInput(
             object.code,
